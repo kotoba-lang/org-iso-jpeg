@@ -10,8 +10,18 @@
 (defn- rd [p] (mapv #(bit-and (int %) 0xff)
                     (with-open [in (io/input-stream (io/resource p))] (.readAllBytes in))))
 
+(defn- reconstitute-entity
+  "sample_rgb.edn is stored as Datomic/Datascript tx-data (`edn-datomize.bb`
+   wrap-map, ns=resources.jpeg.fixtures.sample-rgb) so it stays queryable.
+   Un-namespace the keys back to the original bare-key fixture shape
+   (:w/:h/:rgb) that this test expects."
+  [tx-data]
+  (into {} (map (fn [[k v]] [(keyword (name k)) v]))
+        (dissoc (first tx-data) :db/id)))
+
 (deftest baseline-decode-vs-pillow
-  (let [exp (edn/read-string (slurp (io/resource "jpeg/fixtures/sample_rgb.edn")))
+  (let [exp (reconstitute-entity
+             (edn/read-string (slurp (io/resource "jpeg/fixtures/sample_rgb.edn"))))
         out (jd/decode-rgb (rd "jpeg/fixtures/sample.jpg"))
         e   (:rgb exp) g (:rgb out)]
     (testing "dimensions"
