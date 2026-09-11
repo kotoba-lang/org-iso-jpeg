@@ -30,5 +30,5 @@ ADR-2606280010).
 ## Test
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
