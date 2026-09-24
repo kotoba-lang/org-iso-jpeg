@@ -2,7 +2,7 @@
   "Baseline JPEG pixel decode vs Pillow's decode of the same file. JPEG is lossy
    and IDCT rounding differs between implementations, so we assert bit-CLOSE
    (mean abs error small, max error bounded), not bit-exact."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [jpeg.decode :as jd]))
