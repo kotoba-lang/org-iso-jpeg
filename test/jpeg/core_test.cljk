@@ -1,7 +1,7 @@
 (ns jpeg.core-test
   "JPEG metadata reader vs a real Pillow-encoded JPEG. Pixels are not decoded
    here (see jpeg.decode-test) — this verifies marker-walk geometry."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [clojure.java.io :as io]
             [jpeg.core :as jpeg]))
 
