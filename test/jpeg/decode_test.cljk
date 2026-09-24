@@ -3,7 +3,7 @@
    and IDCT rounding differs between implementations, so we assert bit-CLOSE
    (mean abs error small, max error bounded), not bit-exact."
   (:require [kotoba.test :refer [deftest is testing]]
-            [clojure.edn :as edn]
+            [kotoba.lang.edn :as edn]
             [clojure.java.io :as io]
             [jpeg.decode :as jd]))
 
