@@ -2,7 +2,7 @@
   "JPEG metadata reader vs a real Pillow-encoded JPEG. Pixels are not decoded
    here (see jpeg.decode-test) — this verifies marker-walk geometry."
   (:require [kotoba.test :refer [deftest is testing]]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [jpeg.core :as jpeg]))
 
 (defn- rd [p] (mapv #(bit-and (int %) 0xff)

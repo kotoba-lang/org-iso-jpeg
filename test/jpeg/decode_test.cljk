@@ -4,7 +4,7 @@
    (mean abs error small, max error bounded), not bit-exact."
   (:require [kotoba.test :refer [deftest is testing]]
             [kotoba.lang.edn :as edn]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [jpeg.decode :as jd]))
 
 (defn- rd [p] (mapv #(bit-and (int %) 0xff)
